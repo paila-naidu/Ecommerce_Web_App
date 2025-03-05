@@ -53,7 +53,6 @@ public class ProductController {
         Page<ProductResponse> productResponses = productService.getProducts(pageable, brandId, typeId, keyword);
         return new ResponseEntity<>(productResponses, HttpStatus.OK);
     }
-
     @GetMapping("/brands")
     public ResponseEntity<List<BrandResponse>> getBrands() {
         List<BrandResponse> brandResponses = brandService.getAllBrands();
