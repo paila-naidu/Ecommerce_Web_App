@@ -35,13 +35,13 @@ public class OrdersController {
         List<OrderResponse> orders = orderService.getAllOrders();
         return ResponseEntity.ok(orders);
     }
-
+    //This is to get all orders
     @GetMapping("/paged")
     public ResponseEntity<Page<OrderResponse>> getAllOrdersPaged(Pageable pageable){
         Page<OrderResponse> orders = orderService.getAllOrders(pageable);
         return ResponseEntity.ok(orders);
     }
-    
+    //This is to create an order
     @PostMapping
     public ResponseEntity<Integer> createOrder(@Valid @RequestBody OrderDto orderDto){
         Integer orderId = orderService.createOrder(orderDto);
@@ -51,7 +51,7 @@ public class OrdersController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
+    // This is to delete the order
     @DeleteMapping("/{orderId}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Integer orderId){
         orderService.deleteOrder(orderId);
